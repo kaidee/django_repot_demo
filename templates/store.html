@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %} 产品目录 {% endblock %}
+{% block pagename %} 产品目录 {% endblock %}
+
+{% block content %} 
+{% for item in products %}
+<div class="row" style="padding-top:10">
+	<div class="span3 media-grid">
+		<a href="#">
+	    <img class="thumbnail" src="/{{item.images.photo}}" alt="">
+	    </a>
+	</div>
+	<div class="span-two-thirds">
+		<h3>{{item.title}}</h3>
+		<br/>
+		{{item.description}}
+		<br/>
+		<br/>
+		<br/>
+		<div class="row">
+			<div class="span2"><h3>￥{{item.price|floatformat:"2"}}</h3></div>
+			<div class="span"><a class="btn primary" href="/cart/view/{{item.id}}">加入购物车</a></div>
+		</div>
+	</div>
+
+</div>
+<div class="page-header">
+</div>
+{% endfor %}
+
+{% if products.has_previous %}
+    <a href="?page={{ products.previous_page_number }}">上一页</a>
+{% endif %}
+
+<span class="current">
+    第{{ products.number }}页，共{{ products.paginator.num_pages }}页
+</span>
+
+{% if products.has_next %}
+        <a href="?page={{ products.next_page_number }}">下一页</a>
+{% endif %}
+    <div class="page-header">
+    </div>
+    <br><br>
+      </div><!--span10-->  
+      <div class="span4">  
+        <h5>我的购物车:</h5><br/>  
+            <table class="condensed-table">  
+              <tbody>  
+              {% for item in cart.items %}  
+                <tr>  
+                  <th>{{item.quantity}}x</th>  
+                  <td>{{item.product.title}}</td>  
+                  <td>￥{% widthratio item.quantity 1 item.unit_price %} </td>  
+                </tr>  
+              {% endfor %}  
+                <tr>  
+                  <td></td>  
+                  <th>总计：</th>  
+                  <th>￥{{cart.total_price|floatformat:"2"}}</th>  
+                </tr>  
+              </tbody>  
+            </table>  
+              
+            <a class="btn danger" href="{% url depot1.views.clean_cart %}">清空</a>  
+            <a class="btn success" href="{% url depot1.views.create_order %}">结算</a>  
+        </div><!--span4-->  
+{% endblock %}
+
+
+
+{% comment %}
+This is a
+multi‐line comment.
+{% endcomment %}

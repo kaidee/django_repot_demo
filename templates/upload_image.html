@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %} 上传图片 {% endblock %}
+{% block pagename %} 上传图片 {% endblock %}
+{% block content %} 
+<table>
+<form action="" method="POST"> {% csrf_token %}
+  {{form}}
+  <tr>
+    <th colspan="2" ><input type="submit" value="Upload"/></th>
+  </tr>
+</form>
+</table>
+{% endblock %}

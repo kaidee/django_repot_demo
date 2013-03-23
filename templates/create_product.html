@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %} 创建产品 {% endblock %}
+{% block pagename %} 创建产品 {% endblock %}
+{% block content %} 
+<table>
+<form action="" method="POST"> {% csrf_token %}
+  {{form.as_p}}
+  <tr>
+    <th colspan="2" ><input type="submit" value="Create"/></th>
+    <td><a class="btn success" href="{% url depot1.views.upload_image %}">上传图片</a></td>
+  </tr>
+</form>
+</table>
+{% endblock %}
