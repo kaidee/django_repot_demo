@@ -20,6 +20,7 @@ from django.contrib.auth.decorators import login_required
 from depot1.models import *
 from forms import *
 import ImageFile
+# from PIL import Image
 import datetime
 
 def store_view(request):
@@ -58,7 +59,7 @@ def upload_image(request):
         "form": form
         }, context_instance=RequestContext(request))
     
-@login_required
+# @login_required
 def list_product(request):
   
     list_items = Product.objects.all()
