@@ -38,5 +38,5 @@ class ImagesForm(forms.ModelForm):
     """docstring for ImagesForm"""
     class Meta:
         model = Images
-    def __init__(self, arg):
-        super(ImagesForm, self).__init__()
+    # def __init__(self, arg):
+        # super(ImagesForm, self).__init__()

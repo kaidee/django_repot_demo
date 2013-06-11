@@ -16,8 +16,8 @@
 	<link rel="stylesheet" href="/static/css/layout.css">
 </head>
 <body>
-	<div class="topbar">
-      <div class="fill">
+	<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
         <div class="container">
           <a class="brand" href="#">Depot</a>
           <ul class="nav">
@@ -27,12 +27,12 @@
 			      <li><a href="/about/">ABOUT</a></li>
           </ul>
           
-            {% if request.user.is_authenticated %}
+            {% if user.is_authenticated %}
                 <div class="pull-right">
-                  <a href=#>欢迎您：{{request.user}}</a>
+                  <a href='#'>欢迎您：{{user}}</a>
                   <a class="btn danger small" href="{% url depot1.views.logout_view %}">注销</a>
                 </div>
-                {% else %}
+            {% else %}
                 <form action="{% url depot1.views.login_view %}" method="post" class="pull-right">
                   {% csrf_token %}
            

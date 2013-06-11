@@ -21,7 +21,7 @@ class Category(models.Model):
 
 class Images(models.Model):
 	title = models.CharField(max_length=50, blank=True, null=True)
-	photo = models.ImageField(upload_to='static/img/%Y/%m', blank=True, null=True)
+	photo = models.ImageField(upload_to='static/img', blank=True, null=True)
 	timestamp = models.DateTimeField(auto_now_add=True)
 
 	class Meta:

@@ -51,9 +51,19 @@ def create_product(request):
         )
 
 def upload_image(request):
-    form = ImagesForm(request.POST or None)    
-    if form.is_valid():
-        form.save()
+    if request.method == 'POST':
+        form = ImagesForm(request.POST, request.FILES)
+        print 'form'
+        if form.is_valid():
+            print 'form is_valid'
+            title = form.cleaned_data['title']
+            photo = form.cleaned_data['photo']
+            print 'photo:',photo
+            image = Images(title=title,photo=photo)
+            image.save()
+            # form = ImagesForm()
+            return HttpResponseRedirect("/create/")
+    else:
         form = ImagesForm()
     return render_to_response("upload_image.html", {
         "form": form
